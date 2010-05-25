@@ -4,4 +4,4 @@ Manifest.txt
 README.rdoc
 Rakefile
 lib/sinatra/default_charset.rb
-test/test_sinatra_default_charset.rb
+test/test_sinatra/test_default_charset.rb

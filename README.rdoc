@@ -9,21 +9,47 @@
 
 == DESCRIPTION:
 
-Sets a default charset in the MIME headers. Defaults to utf-8.
+Sets a default charset in the MIME headers. Defaults to
+Encoding.default_external on ruby 1.9, and to $kcode on ruby 1.8, or falls
+back to utf-8 when neither are available.
+
+Provides a setting called +default_charset+ that allows overriding the
+auto-discovered default.
+
+To remove the transmitted charset for a single request, simply pass +:charset
+=> nil+ as your parameter to the +content_type+ helper.
 
 == FEATURES/PROBLEMS:
 
-* TODO  add some actual tests
+* Applies a default charset field to the Content-Type header of all responses
+* Allows for removal of the default-applied field
+* Allows for per-request overrides of the value
 
 == SYNOPSIS:
 
   require 'sinatra/default_charset'
   register Sinatra::DefaultCharset
   set :default_charset, 'utf-8'
+  
+  get '/' do
+    "I'm utf-8"
+  end
+  
+  get '/shift_jis' do 
+    content_type :html, :charset => 'shift_jis'
+    "I'm shift_jis"
+  end
+  
+  get '/none' do
+    content_type :html, :charset => nil
+    "I have no charset in my headers"
+  end
 
 == REQUIREMENTS:
 
-* sinatra
+* sinatra for runtime.
+
+* rack-test and minitest for testing.
 
 == INSTALL:
 

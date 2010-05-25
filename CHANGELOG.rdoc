@@ -1,3 +1,11 @@
+=== 0.2.0 / 2010-05-24
+
+* 2 major enhancements
+
+  * Tests
+  * Can remove the charset by passing :charset => nil
+  * Defaults discovered from $kcode or Encoding.default_external
+
 === 0.1.0 / 2010-05-24
 
 * 1 major enhancement
