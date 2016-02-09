@@ -25,8 +25,8 @@ module Sinatra
 
     DEFAULT_CHARSET = charset
 
-    # Defaults to 
-    def content_type(type, params = {})
+    # Defaults to
+    def content_type(type = nil, params = {})
       if params.include?(:charset)
         params.delete(:charset) if params[:charset].nil?
       else
